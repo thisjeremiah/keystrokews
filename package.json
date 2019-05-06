@@ -1,0 +1,31 @@
+{
+  "name": "keystrokews",
+  "version": "1.0.0",
+  "bin": "lib/server.js",
+  "author": "Jeremiah Montoya <jeremiahmontoya@me.com>",
+  "license": "MIT",
+  "scripts": {
+    "server": "ts-node src/server.ts",
+    "client": "ts-node src/client.ts",
+    "build": "tsc && cp index.html lib",
+    "package": "pkg ."
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "powershell": "^2.3.1",
+    "ws": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.1",
+    "@types/ws": "^6.0.1",
+    "pkg": "^4.3.8",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
+  },
+  "pkg": {
+    "assets": [
+      "./lib/index.html",
+      "index.html"
+    ]
+  }
+}
