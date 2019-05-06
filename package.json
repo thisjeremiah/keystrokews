@@ -8,7 +8,9 @@
     "server": "ts-node src/server.ts",
     "client": "ts-node src/client.ts",
     "build": "tsc && cp index.html lib",
-    "package": "pkg ."
+    "package": "yarn package-client && yarn package-server",
+    "package-client": "pkg lib/client.js",
+    "package-server": "pkg lib/server.js"
   },
   "dependencies": {
     "express": "^4.16.4",
@@ -23,9 +25,6 @@
     "typescript": "^3.4.5"
   },
   "pkg": {
-    "assets": [
-      "./lib/index.html",
-      "index.html"
-    ]
+    "assets": ["./lib/index.html", "index.html"]
   }
 }

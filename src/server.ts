@@ -72,6 +72,7 @@ function startWebSocketServer() {
     ws.on('message', (s: string) => {
       try {
         keystroke(s)
+        broadcast(s, ws)
       } catch (err) {
         console.error(err)
       }
