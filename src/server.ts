@@ -27,7 +27,7 @@ function startWebSocketServer() {
   }
 
   wss.on('connection', ws => {
-    console.log('WebSocket Client connected')
+    console.log('WebSocket client connected')
 
     ws.on('message', (message: string) => {
       try {
@@ -37,12 +37,12 @@ function startWebSocketServer() {
       }
     })
 
-    ws.on('close', () => console.log('WebSocket Client closed'))
+    ws.on('close', () => console.log('WebSocket client closed'))
 
     ws.on('error', err => console.error(err))
   })
   wss.on('listening', () =>
-    console.log(`WebSocket Server listening on port ${WEBSOCKET_PORT}`),
+    console.log(`WebSocket server listening on port ${WEBSOCKET_PORT}`),
   )
   wss.on('error', err => console.error(err))
 }
@@ -56,7 +56,7 @@ function startHttpServer() {
 
   app.listen(HTTP_PORT)
 
-  console.log(`HTTP Server listening on port ${HTTP_PORT}`)
+  console.log(`HTTP server listening on port ${HTTP_PORT}`)
 }
 
 main()

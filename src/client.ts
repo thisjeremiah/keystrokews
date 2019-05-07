@@ -23,7 +23,7 @@ function keystroke(keyMessage: string) {
 
   if (!key.name) return
 
-  console.log('keystroke ', key.name)
+  console.log(key.name)
 
   if (isWindows) {
     windowsSendKey(key.name)
