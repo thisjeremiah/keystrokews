@@ -8,8 +8,8 @@
     "client": "ts-node src/client.ts",
     "build": "tsc && cp index.html lib",
     "package": "yarn package-client && yarn package-server",
-    "package-client": "pkg --config ./client.pkg.json lib/client.js",
-    "package-server": "pkg --config ./server.pkg.json lib/server.js"
+    "package-client": "pkg --config ./client.pkg.json --out-path build lib/client.js",
+    "package-server": "pkg --config ./server.pkg.json --out-path build lib/server.js"
   },
   "dependencies": {
     "express": "^4.16.4",

@@ -2,15 +2,15 @@
   <head>
     <title>keypressws</title>
   </head>
-  <body id="body" style="width: 100vw; height: 100vh;">
-    <input id="hidden-input" style="width: 100%; height: 100vh;">
+  <body>
+    <input style="width: 100%; height: 100vh;">
     <script type="text/javascript">
       const port = '7379'
       const ws = new WebSocket(`ws://${window.location.hostname}:${port}`)
       ws.onopen = () => {}
       ws.onmessage = () => {}
       ws.onclose = () => {}
-      window.addEventListener('keypress', (e) => {
+      window.addEventListener('keypress', e => {
         const key = {
           name: e.key,
           ctrl: e.ctrlKey,
