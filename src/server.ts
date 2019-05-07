@@ -6,8 +6,8 @@ import path from 'path'
 import express from 'express'
 import { windowsSendKey } from './windowsScripts'
 
-const WEBSOCKET_PORT = 7379 || process.env.WEBSOCKET_PORT
-const HTTP_PORT = 7777 || process.env.HTTP_PORT
+const WEBSOCKET_PORT = Number(process.env.WEBSOCKET_PORT) || 7379
+const HTTP_PORT = Number(process.env.HTTP_PORT) || 7777
 
 const SERVER_CONNECTED = 'server.connected'
 const SERVER_HEARTBEAT = 'server.heartbeat'

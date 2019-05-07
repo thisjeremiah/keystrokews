@@ -3,8 +3,8 @@ import { exec } from 'child_process'
 import os from 'os'
 import { windowsSendKey } from './windowsScripts'
 
-const WEBSOCKET_MASTER = '1.1.1.1' || process.env.WEBSOCKET_MASTER
-const WEBSOCKET_PORT = 7379 || process.env.WEBSOCKET_PORT
+const WEBSOCKET_MASTER = process.env.WEBSOCKET_MASTER || '1.1.1.1'
+const WEBSOCKET_PORT = process.env.WEBSOCKET_PORT || 7379
 
 const ws = new WebSocket(`ws://${WEBSOCKET_MASTER}:${WEBSOCKET_PORT}`)
 
