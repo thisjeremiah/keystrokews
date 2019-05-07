@@ -6,7 +6,7 @@
   "scripts": {
     "server": "ts-node src/server.ts",
     "client": "ts-node src/client.ts",
-    "build": "tsc && ncp index.html lib",
+    "build": "tsc",
     "package": "yarn package-client && yarn package-server",
     "package-client": "pkg --config ./client.pkg.json --out-path build lib/client.js",
     "package-server": "pkg --config ./server.pkg.json --out-path build lib/server.js"
@@ -19,7 +19,6 @@
   "devDependencies": {
     "@types/express": "^4.16.1",
     "@types/ws": "^6.0.1",
-    "ncp": "^2.0.0",
     "pkg": "^4.3.8",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.5"
