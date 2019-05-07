@@ -1,0 +1,5 @@
+{
+  "name": "client",
+  "bin": "lib/client.js",
+  "pkg": {}
+}

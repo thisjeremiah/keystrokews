@@ -1,7 +1,6 @@
 {
   "name": "keystrokews",
   "version": "1.0.0",
-  "bin": "lib/server.js",
   "author": "Jeremiah Montoya <jeremiahmontoya@me.com>",
   "license": "MIT",
   "scripts": {
@@ -9,8 +8,8 @@
     "client": "ts-node src/client.ts",
     "build": "tsc && cp index.html lib",
     "package": "yarn package-client && yarn package-server",
-    "package-client": "pkg -c package.json lib/client.js",
-    "package-server": "pkg -c package.json lib/server.js"
+    "package-client": "pkg --config ./client.pkg.json lib/client.js",
+    "package-server": "pkg --config ./server.pkg.json lib/server.js"
   },
   "dependencies": {
     "express": "^4.16.4",
@@ -23,8 +22,5 @@
     "pkg": "^4.3.8",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.5"
-  },
-  "pkg": {
-    "assets": ["./lib/index.html", "index.html"]
   }
 }
