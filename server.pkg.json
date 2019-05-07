@@ -1,6 +1,5 @@
 {
   "name": "server",
-  "bin": "lib/server.js",
   "pkg": {
     "assets": ["./lib/index.html"]
   }
