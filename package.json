@@ -9,8 +9,8 @@
     "client": "ts-node src/client.ts",
     "build": "tsc && cp index.html lib",
     "package": "yarn package-client && yarn package-server",
-    "package-client": "pkg lib/client.js",
-    "package-server": "pkg lib/server.js"
+    "package-client": "pkg -c package.json lib/client.js",
+    "package-server": "pkg -c package.json lib/server.js"
   },
   "dependencies": {
     "express": "^4.16.4",
