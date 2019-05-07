@@ -10,23 +10,14 @@
       ws.onopen = () => {}
       ws.onmessage = () => {}
       ws.onclose = () => {}
-      const body = document.querySelector('#body')
-      let initialized = false
-      body.addEventListener('click', function () {
-          if (initialized) return
-          initialized = true
-          const inputElement = document.querySelector('#hidden-input')
-          inputElement.focus()
-          window.addEventListener('keypress', function (e) {
-            inputElement.value = ''
-            const key = {
-              name: e.key,
-              ctrl: e.ctrlKey,
-              shift: e.shiftKey,
-            }
-            ws.send(JSON.stringify(key))
-          }, false)
-      })
+      window.addEventListener('keypress', (e) => {
+        const key = {
+          name: e.key,
+          ctrl: e.ctrlKey,
+          shift: e.shiftKey,
+        }
+        ws.send(JSON.stringify(key))
+      }, false)
     </script>
   </body>
 </html>
