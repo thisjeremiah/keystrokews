@@ -8,16 +8,19 @@ import express from 'express'
 const WEBSOCKET_PORT = Number(process.env.WEBSOCKET_PORT) || 7379
 const HTTP_PORT = Number(process.env.HTTP_PORT) || 7777
 
-function startWebSocketServer() {
-  console.log('Start WebSocket Server')
+function main() {
+  startWebSocketServer()
+  startHttpServer()
+}
 
+function startWebSocketServer() {
   const wss = new Server({
     port: WEBSOCKET_PORT,
   })
 
-  function broadcast(message: string, wsSender?: any) {
+  function broadcast(message: string, sender?: any) {
     wss.clients.forEach(ws => {
-      if (ws.readyState === ws.OPEN && ws !== wsSender) {
+      if (ws.readyState === ws.OPEN && ws !== sender) {
         ws.send(message)
       }
     })
@@ -35,6 +38,7 @@ function startWebSocketServer() {
     })
 
     ws.on('close', () => console.log('WebSocket Client closed'))
+
     ws.on('error', err => console.error(err))
   })
   wss.on('listening', () =>
@@ -53,11 +57,6 @@ function startHttpServer() {
   app.listen(HTTP_PORT)
 
   console.log(`HTTP Server listening on port ${HTTP_PORT}`)
-}
-
-function main() {
-  startWebSocketServer()
-  startHttpServer()
 }
 
 main()
