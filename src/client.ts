@@ -1,7 +1,9 @@
 import WebSocket from 'ws'
 import { exec } from 'child_process'
 import os from 'os'
-import PowerShell from 'powershell'
+// TODO determine delete or use
+// import PowerShell from 'powershell'
+import Shell from 'node-powershell'
 
 const WEBSOCKET_MASTER = process.env.WEBSOCKET_MASTER || '127.0.0.1'
 const WEBSOCKET_PORT = process.env.WEBSOCKET_PORT || 7379
@@ -13,6 +15,11 @@ const isWindows = os.type() === 'Windows_NT'
 // TODO Status monitoring
 
 const ws = new WebSocket(`ws://${WEBSOCKET_MASTER}:${WEBSOCKET_PORT}`)
+
+const ps = new Shell({
+  executionPolicy: 'Bypass',
+  noProfile: true,
+})
 
 console.log(
   `WebSocket Client listening on ws://${WEBSOCKET_MASTER}:${WEBSOCKET_PORT}`,
@@ -39,15 +46,22 @@ function macSendKey(key: string) {
   })
 }
 
-function windowsSendKey(key: string) {
+async function windowsSendKey(key: string) {
   const script = String.raw`
     $wsh = New-Object -ComObject WScript.Shell;
     $wsh.SendKeys('{${key}}')`
-  const ps = new PowerShell(script)
-  ps.on('error', err => console.error(err))
-  ps.on('output', data => console.log(data))
-  ps.on('error-output', data => console.error(data))
-  ps.on('end', () => {})
+  ps.addCommand(script)
+  try {
+    await ps.invoke()
+  } catch (e) {
+    console.error(e)
+  }
+  // TODO Determine delete or use
+  // const ps = new PowerShell(script)
+  // ps.on('error', err => console.error(err))
+  // ps.on('output', data => console.log(data))
+  // ps.on('error-output', data => console.error(data))
+  // ps.on('end', () => {})
 }
 
 ws.on('open', () => {})
