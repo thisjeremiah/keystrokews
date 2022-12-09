@@ -12,7 +12,7 @@
     "package-server": "pkg --config ./server.pkg.json --out-path build lib/server.js"
   },
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "node-powershell": "^4.0.0",
     "powershell": "^2.3.1",
     "ws": "^7.0.0"
